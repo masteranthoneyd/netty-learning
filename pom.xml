@@ -6,7 +6,11 @@
 
     <groupId>com.yangbingdong</groupId>
     <artifactId>netty-learning</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>chapter-02-netty简单入门</module>
+    </modules>
 
 
 </project>

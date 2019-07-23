@@ -45,6 +45,13 @@ public class LoginRespHandler extends SimpleChannelInboundHandler<LoginRespPacke
         }
     }
 
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("链接被关闭了");
+        Runtime.getRuntime().exit(0);
+        super.channelInactive(ctx);
+    }
+
     private static void listenSystemIn(Channel channel) {
         new Thread(() -> {
             Scanner sc = new Scanner(System.in);

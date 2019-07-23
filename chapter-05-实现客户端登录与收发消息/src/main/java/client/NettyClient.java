@@ -15,11 +15,9 @@ import server.NettyServer;
  * @contact yangbingdong1994@gmail.com
  */
 public class NettyClient {
-
+    public static NioEventLoopGroup group = new NioEventLoopGroup();
     public static void main(String[] args) {
         Bootstrap bootstrap = new Bootstrap();
-        NioEventLoopGroup group = new NioEventLoopGroup();
-
         bootstrap.group(group)
                  .channel(NioSocketChannel.class)
                  .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)

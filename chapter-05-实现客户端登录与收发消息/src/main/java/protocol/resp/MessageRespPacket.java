@@ -1,9 +1,10 @@
-package protocol;
+package protocol.resp;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import protocol.Packet;
 
-import static protocol.Command.LOGIN_RESPONSE;
+import static protocol.Command.MESSAGE_RESP;
 
 /**
  * @author ybd
@@ -12,14 +13,12 @@ import static protocol.Command.LOGIN_RESPONSE;
  */
 @Data
 @Accessors(chain = true)
-public class LoginResponsePacket implements Packet {
+public class MessageRespPacket implements Packet {
 
-    private boolean success;
-
-    private String data;
+    private String message;
 
     @Override
     public Byte supportCommand() {
-        return LOGIN_RESPONSE;
+        return MESSAGE_RESP;
     }
 }

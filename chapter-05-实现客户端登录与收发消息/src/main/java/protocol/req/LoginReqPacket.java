@@ -1,9 +1,10 @@
-package protocol;
+package protocol.req;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import protocol.Packet;
 
-import static protocol.Command.LOGIN_REQUEST;
+import static protocol.Command.LOGIN_REQ;
 
 /**
  * @author ybd
@@ -12,7 +13,7 @@ import static protocol.Command.LOGIN_REQUEST;
  */
 @Data
 @Accessors(chain = true)
-public class LoginRequestPacket implements Packet {
+public class LoginReqPacket implements Packet {
 
     private Integer userId;
 
@@ -22,6 +23,6 @@ public class LoginRequestPacket implements Packet {
 
     @Override
     public Byte supportCommand() {
-        return LOGIN_REQUEST;
+        return LOGIN_REQ;
     }
 }

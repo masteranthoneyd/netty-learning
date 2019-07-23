@@ -2,14 +2,20 @@ package protocol;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
+import protocol.req.LoginReqPacket;
+import protocol.req.MessageReqPacket;
+import protocol.resp.LoginRespPacket;
+import protocol.resp.MessageRespPacket;
 import serialize.Serializer;
 import serialize.SerializerManager;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static protocol.Command.LOGIN_REQUEST;
-import static protocol.Command.LOGIN_RESPONSE;
+import static protocol.Command.LOGIN_REQ;
+import static protocol.Command.LOGIN_RESP;
+import static protocol.Command.MESSAGE_REQ;
+import static protocol.Command.MESSAGE_RESP;
 
 /**
  * @author ybd
@@ -24,13 +30,15 @@ public class PacketCodec {
 
     static {
         packetTypeMap = new HashMap<>(16);
-        packetTypeMap.put(LOGIN_REQUEST, LoginRequestPacket.class);
-        packetTypeMap.put(LOGIN_RESPONSE, LoginResponsePacket.class);
+        packetTypeMap.put(LOGIN_REQ, LoginReqPacket.class);
+        packetTypeMap.put(LOGIN_RESP, LoginRespPacket.class);
+        packetTypeMap.put(MESSAGE_REQ, MessageReqPacket.class);
+        packetTypeMap.put(MESSAGE_RESP, MessageRespPacket.class);
     }
 
-    public static ByteBuf encode(Packet packet) {
+    public static ByteBuf encode(Packet packet, ByteBufAllocator alloc) {
         // 1. 获取 ByteBuf 对象
-        ByteBuf byteBuf = ByteBufAllocator.DEFAULT.ioBuffer();
+        ByteBuf byteBuf = alloc.ioBuffer();
 
         // 2. 序列化 Java 对象
         byte[] bytes = SerializerManager.JSON.serialize(packet);

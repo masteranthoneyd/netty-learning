@@ -14,6 +14,7 @@
         <module>chapter-04-netty客户端与服务端通信协议编解码</module>
         <module>chapter-05-实现客户端登录与收发消息</module>
         <module>chapter-06-构建客户端与服务端 pipeline</module>
+        <module>chapter-07-拆包粘包理论与解决方案</module>
     </modules>
 
 

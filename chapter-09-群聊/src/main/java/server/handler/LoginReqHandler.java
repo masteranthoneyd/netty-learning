@@ -24,7 +24,7 @@ public class LoginReqHandler extends SimpleChannelInboundHandler<LoginReqPacket>
         LoginRespPacket loginRespPacket = new LoginRespPacket();
         if (valid(loginRespPacket)) {
             String userId = randomUserId();
-            System.out.println("用户 [" + loginReqPacket.getUsername() + "] 验证信息通过");
+            System.out.println("[" + loginReqPacket.getUsername() + "] 登录成功");
             loginRespPacket.setSuccess(true)
                            .setUserName(loginReqPacket.getUsername())
                            .setUserId(userId)

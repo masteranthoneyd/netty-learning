@@ -20,6 +20,7 @@ public class ConsoleCommandManager implements ConsoleCommand {
         consoleCommandMap = new HashMap<>(16);
         consoleCommandMap.putIfAbsent("createGroup", new CreateGroupConsoleCommand());
         consoleCommandMap.putIfAbsent("ss", new SendToUserConsoleCommand());
+        consoleCommandMap.putIfAbsent("sg", new SendToGroupConsoleCommand());
         consoleCommandMap.putIfAbsent("logout", new LogoutConsoleCommand());
         consoleCommandMap.putIfAbsent("joinGroup", new JoinGroupConsoleCommand());
         consoleCommandMap.putIfAbsent("quitGroup", new QuitGroupConsoleCommand());

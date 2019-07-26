@@ -23,4 +23,9 @@ public class Session {
     public static Session of(String userId, String userName) {
         return new Session(userId, userName);
     }
+
+    @Override
+    public String toString() {
+        return userId + ":" + userName;
+    }
 }

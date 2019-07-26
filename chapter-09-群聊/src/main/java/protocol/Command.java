@@ -28,4 +28,7 @@ public interface Command {
     Byte LIST_GROUP_MEMBER_REQ = Byte.valueOf("13");
     Byte LIST_GROUP_MEMBER_RESP = Byte.valueOf("14");
 
+    Byte GROUP_MESSAGE_REQ = Byte.valueOf("15");
+    Byte GROUP_MESSAGE_RESP = Byte.valueOf("16");
+
 }

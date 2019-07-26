@@ -2,6 +2,7 @@ package protocol;
 
 import io.netty.buffer.ByteBuf;
 import protocol.req.CreateGroupReqPacket;
+import protocol.req.GroupMessageReqPacket;
 import protocol.req.JoinGroupReqPacket;
 import protocol.req.ListGroupMemberReqPacket;
 import protocol.req.LoginReqPacket;
@@ -9,6 +10,7 @@ import protocol.req.LogoutReqPacket;
 import protocol.req.MessageReqPacket;
 import protocol.req.QuitGroupReqPacket;
 import protocol.resp.CreateGroupRespPacket;
+import protocol.resp.GroupMessageRespPacket;
 import protocol.resp.JoinGroupRespPacket;
 import protocol.resp.ListGroupMemberRespPacket;
 import protocol.resp.LoginRespPacket;
@@ -23,6 +25,8 @@ import java.util.Map;
 
 import static protocol.Command.CREATE_GROUP_REQ;
 import static protocol.Command.CREATE_GROUP_RESP;
+import static protocol.Command.GROUP_MESSAGE_REQ;
+import static protocol.Command.GROUP_MESSAGE_RESP;
 import static protocol.Command.JOIN_GROUP_REQ;
 import static protocol.Command.JOIN_GROUP_RESP;
 import static protocol.Command.LIST_GROUP_MEMBER_REQ;
@@ -63,6 +67,8 @@ public class PacketCodec {
         packetTypeMap.put(QUIT_GROUP_RESP, QuitGroupRespPacket.class);
         packetTypeMap.put(LIST_GROUP_MEMBER_REQ, ListGroupMemberReqPacket.class);
         packetTypeMap.put(LIST_GROUP_MEMBER_RESP, ListGroupMemberRespPacket.class);
+        packetTypeMap.put(GROUP_MESSAGE_REQ, GroupMessageReqPacket.class);
+        packetTypeMap.put(GROUP_MESSAGE_RESP, GroupMessageRespPacket.class);
     }
 
     public static void encode(Packet packet, ByteBuf buf) {

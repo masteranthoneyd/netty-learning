@@ -6,11 +6,13 @@ import protocol.req.JoinGroupReqPacket;
 import protocol.req.LoginReqPacket;
 import protocol.req.LogoutReqPacket;
 import protocol.req.MessageReqPacket;
+import protocol.req.QuitGroupReqPacket;
 import protocol.resp.CreateGroupRespPacket;
 import protocol.resp.JoinGroupRespPacket;
 import protocol.resp.LoginRespPacket;
 import protocol.resp.LogoutRespPacket;
 import protocol.resp.MessageRespPacket;
+import protocol.resp.QuitGroupRespPacket;
 import serialize.Serializer;
 import serialize.SerializerManager;
 
@@ -27,6 +29,8 @@ import static protocol.Command.LOGOUT_REQ;
 import static protocol.Command.LOGOUT_RESP;
 import static protocol.Command.MESSAGE_REQ;
 import static protocol.Command.MESSAGE_RESP;
+import static protocol.Command.QUIT_GROUP_REQ;
+import static protocol.Command.QUIT_GROUP_RESP;
 
 /**
  * @author ybd
@@ -51,6 +55,8 @@ public class PacketCodec {
         packetTypeMap.put(CREATE_GROUP_RESP, CreateGroupRespPacket.class);
         packetTypeMap.put(JOIN_GROUP_REQ, JoinGroupReqPacket.class);
         packetTypeMap.put(JOIN_GROUP_RESP, JoinGroupRespPacket.class);
+        packetTypeMap.put(QUIT_GROUP_REQ, QuitGroupReqPacket.class);
+        packetTypeMap.put(QUIT_GROUP_RESP, QuitGroupRespPacket.class);
     }
 
     public static void encode(Packet packet, ByteBuf buf) {

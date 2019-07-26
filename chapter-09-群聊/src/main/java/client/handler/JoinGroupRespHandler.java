@@ -21,7 +21,7 @@ public class JoinGroupRespHandler extends SimpleChannelInboundHandler<JoinGroupR
         if (getSession(ctx.channel()).getUserId().equals(session.getUserId())) {
             System.out.println("加入群[" + groupId + "]成功!");
         } else {
-            System.out.println("[" + session.getUserName() + "] 加入了" + groupId + "聊群");
+            System.out.println("[" + session.getUserName() + "] 加入了聊群" + groupId);
         }
     }
 }

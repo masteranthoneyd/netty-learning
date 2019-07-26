@@ -17,6 +17,7 @@ import server.handler.JoinGroupReqPacketHandler;
 import server.handler.LoginReqHandler;
 import server.handler.LogoutReqHandler;
 import server.handler.MessageReqHandler;
+import server.handler.QuitGroupReqHandler;
 
 /**
  * @author ybd
@@ -54,6 +55,7 @@ public class NettyServer {
                                  .addLast(new CreateGroupReqPacketHandler())
                                  .addLast(new MessageReqHandler())
                                  .addLast(new JoinGroupReqPacketHandler())
+                                 .addLast(new QuitGroupReqHandler())
 
                                  .addLast(new PacketEncoder());
 

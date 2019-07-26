@@ -22,6 +22,7 @@ public interface Command {
     Byte JOIN_GROUP_REQ = Byte.valueOf("9");
     Byte JOIN_GROUP_RESP = Byte.valueOf("10");
 
-
+    Byte QUIT_GROUP_REQ = Byte.valueOf("11");
+    Byte QUIT_GROUP_RESP = Byte.valueOf("12");
 
 }

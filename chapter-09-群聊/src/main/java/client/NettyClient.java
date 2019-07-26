@@ -5,6 +5,7 @@ import client.handler.JoinGroupRespHandler;
 import client.handler.LoginRespHandler;
 import client.handler.LogoutRespHandler;
 import client.handler.MessageRespHandler;
+import client.handler.QuitGroupRespHandler;
 import codec.PacketDecoder;
 import codec.PacketEncoder;
 import codec.Spliter;
@@ -43,6 +44,7 @@ public class NettyClient {
                            .addLast(new LogoutRespHandler())
                            .addLast(new CreateGroupRespHandler())
                            .addLast(new JoinGroupRespHandler())
+                           .addLast(new QuitGroupRespHandler())
 
                            .addLast(new PacketEncoder());
                      }

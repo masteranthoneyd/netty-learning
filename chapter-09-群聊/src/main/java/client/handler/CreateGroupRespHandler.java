@@ -12,7 +12,7 @@ import protocol.resp.CreateGroupRespPacket;
 public class CreateGroupRespHandler extends SimpleChannelInboundHandler<CreateGroupRespPacket> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, CreateGroupRespPacket respPacket) {
-        System.out.print("群创建成功，id 为[" + respPacket.getGroupId() + "], ");
+        System.out.print("群创建成功，groupId 为[" + respPacket.getGroupId() + "], ");
         System.out.println("群里面有：" + respPacket.getUserNameSet());
     }
 }

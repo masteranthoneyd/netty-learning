@@ -2,10 +2,12 @@ package protocol;
 
 import io.netty.buffer.ByteBuf;
 import protocol.req.CreateGroupReqPacket;
+import protocol.req.JoinGroupReqPacket;
 import protocol.req.LoginReqPacket;
 import protocol.req.LogoutReqPacket;
 import protocol.req.MessageReqPacket;
 import protocol.resp.CreateGroupRespPacket;
+import protocol.resp.JoinGroupRespPacket;
 import protocol.resp.LoginRespPacket;
 import protocol.resp.LogoutRespPacket;
 import protocol.resp.MessageRespPacket;
@@ -17,6 +19,8 @@ import java.util.Map;
 
 import static protocol.Command.CREATE_GROUP_REQ;
 import static protocol.Command.CREATE_GROUP_RESP;
+import static protocol.Command.JOIN_GROUP_REQ;
+import static protocol.Command.JOIN_GROUP_RESP;
 import static protocol.Command.LOGIN_REQ;
 import static protocol.Command.LOGIN_RESP;
 import static protocol.Command.LOGOUT_REQ;
@@ -45,9 +49,11 @@ public class PacketCodec {
         packetTypeMap.put(LOGOUT_RESP, LogoutRespPacket.class);
         packetTypeMap.put(CREATE_GROUP_REQ, CreateGroupReqPacket.class);
         packetTypeMap.put(CREATE_GROUP_RESP, CreateGroupRespPacket.class);
+        packetTypeMap.put(JOIN_GROUP_REQ, JoinGroupReqPacket.class);
+        packetTypeMap.put(JOIN_GROUP_RESP, JoinGroupRespPacket.class);
     }
 
-    public static ByteBuf encode(Packet packet, ByteBuf buf) {
+    public static void encode(Packet packet, ByteBuf buf) {
         byte[] bytes = SerializerManager.JSON.serialize(packet);
 
         buf.writeInt(MAGIC_NUMBER)
@@ -57,7 +63,6 @@ public class PacketCodec {
            .writeInt(bytes.length)
            .writeBytes(bytes);
 
-        return buf;
     }
 
     public static Packet decode(ByteBuf byteBuf) {

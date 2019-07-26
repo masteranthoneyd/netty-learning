@@ -19,6 +19,9 @@ public interface Command {
     Byte CREATE_GROUP_REQ = Byte.valueOf("7");
     Byte CREATE_GROUP_RESP = Byte.valueOf("8");
 
+    Byte JOIN_GROUP_REQ = Byte.valueOf("9");
+    Byte JOIN_GROUP_RESP = Byte.valueOf("10");
+
 
 
 }

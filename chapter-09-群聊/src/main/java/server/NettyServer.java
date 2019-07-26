@@ -13,6 +13,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.logging.LoggingHandler;
 import server.handler.AuthHandler;
 import server.handler.CreateGroupReqPacketHandler;
+import server.handler.JoinGroupReqPacketHandler;
 import server.handler.LoginReqHandler;
 import server.handler.LogoutReqHandler;
 import server.handler.MessageReqHandler;
@@ -52,6 +53,7 @@ public class NettyServer {
                                  .addLast(new LogoutReqHandler())
                                  .addLast(new CreateGroupReqPacketHandler())
                                  .addLast(new MessageReqHandler())
+                                 .addLast(new JoinGroupReqPacketHandler())
 
                                  .addLast(new PacketEncoder());
 

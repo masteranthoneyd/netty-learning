@@ -3,12 +3,14 @@ package protocol;
 import io.netty.buffer.ByteBuf;
 import protocol.req.CreateGroupReqPacket;
 import protocol.req.JoinGroupReqPacket;
+import protocol.req.ListGroupMemberReqPacket;
 import protocol.req.LoginReqPacket;
 import protocol.req.LogoutReqPacket;
 import protocol.req.MessageReqPacket;
 import protocol.req.QuitGroupReqPacket;
 import protocol.resp.CreateGroupRespPacket;
 import protocol.resp.JoinGroupRespPacket;
+import protocol.resp.ListGroupMemberRespPacket;
 import protocol.resp.LoginRespPacket;
 import protocol.resp.LogoutRespPacket;
 import protocol.resp.MessageRespPacket;
@@ -23,6 +25,8 @@ import static protocol.Command.CREATE_GROUP_REQ;
 import static protocol.Command.CREATE_GROUP_RESP;
 import static protocol.Command.JOIN_GROUP_REQ;
 import static protocol.Command.JOIN_GROUP_RESP;
+import static protocol.Command.LIST_GROUP_MEMBER_REQ;
+import static protocol.Command.LIST_GROUP_MEMBER_RESP;
 import static protocol.Command.LOGIN_REQ;
 import static protocol.Command.LOGIN_RESP;
 import static protocol.Command.LOGOUT_REQ;
@@ -57,6 +61,8 @@ public class PacketCodec {
         packetTypeMap.put(JOIN_GROUP_RESP, JoinGroupRespPacket.class);
         packetTypeMap.put(QUIT_GROUP_REQ, QuitGroupReqPacket.class);
         packetTypeMap.put(QUIT_GROUP_RESP, QuitGroupRespPacket.class);
+        packetTypeMap.put(LIST_GROUP_MEMBER_REQ, ListGroupMemberReqPacket.class);
+        packetTypeMap.put(LIST_GROUP_MEMBER_RESP, ListGroupMemberRespPacket.class);
     }
 
     public static void encode(Packet packet, ByteBuf buf) {

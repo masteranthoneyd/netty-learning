@@ -2,6 +2,7 @@ package client;
 
 import client.handler.CreateGroupRespHandler;
 import client.handler.JoinGroupRespHandler;
+import client.handler.ListGroupMemberRespHandler;
 import client.handler.LoginRespHandler;
 import client.handler.LogoutRespHandler;
 import client.handler.MessageRespHandler;
@@ -45,6 +46,7 @@ public class NettyClient {
                            .addLast(new CreateGroupRespHandler())
                            .addLast(new JoinGroupRespHandler())
                            .addLast(new QuitGroupRespHandler())
+                           .addLast(new ListGroupMemberRespHandler())
 
                            .addLast(new PacketEncoder());
                      }

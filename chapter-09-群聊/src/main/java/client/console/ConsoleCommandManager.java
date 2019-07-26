@@ -23,6 +23,7 @@ public class ConsoleCommandManager implements ConsoleCommand {
         consoleCommandMap.putIfAbsent("logout", new LogoutConsoleCommand());
         consoleCommandMap.putIfAbsent("joinGroup", new JoinGroupConsoleCommand());
         consoleCommandMap.putIfAbsent("quitGroup", new QuitGroupConsoleCommand());
+        consoleCommandMap.putIfAbsent("listGroupMember", new ListGroupMemberConsoleCommand());
     }
 
 

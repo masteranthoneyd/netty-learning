@@ -25,4 +25,7 @@ public interface Command {
     Byte QUIT_GROUP_REQ = Byte.valueOf("11");
     Byte QUIT_GROUP_RESP = Byte.valueOf("12");
 
+    Byte LIST_GROUP_MEMBER_REQ = Byte.valueOf("13");
+    Byte LIST_GROUP_MEMBER_RESP = Byte.valueOf("14");
+
 }

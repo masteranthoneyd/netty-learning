@@ -1,6 +1,7 @@
 package server.handler;
 
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
@@ -21,7 +22,13 @@ import static session.SessionUtil.randomUserId;
  * @date 19-7-25
  * @contact yangbingdong1994@gmail.com
  */
-public class CreateGroupReqPacketHandler extends SimpleChannelInboundHandler<CreateGroupReqPacket> {
+@ChannelHandler.Sharable
+public class CreateGroupReqHandler extends SimpleChannelInboundHandler<CreateGroupReqPacket> {
+    public static final SimpleChannelInboundHandler<CreateGroupReqPacket> INSTANCE = new CreateGroupReqHandler();
+
+    private CreateGroupReqHandler() {
+    }
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, CreateGroupReqPacket reqPacket) {
         System.out.println("收到创建群请求: " + reqPacket);

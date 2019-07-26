@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class SendToUserConsoleCommand implements ConsoleCommand {
     @Override
     public void exec(Scanner scanner, Channel channel) {
+        System.out.print("发送消息给某个某个用户(用户id与内容使用间隔符分开):");
         MessageReqPacket packet = new MessageReqPacket();
         packet.setToUserId(scanner.next())
               .setMessage(scanner.next());

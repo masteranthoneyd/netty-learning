@@ -1,6 +1,7 @@
 package server.handler;
 
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import protocol.req.LoginReqPacket;
@@ -16,7 +17,14 @@ import static session.SessionUtil.randomUserId;
  * @date 19-7-23
  * @contact yangbingdong1994@gmail.com
  */
+@Sharable
 public class LoginReqHandler extends SimpleChannelInboundHandler<LoginReqPacket> {
+
+    public static final LoginReqHandler INSTANCE = new LoginReqHandler();
+
+    private LoginReqHandler() {
+    }
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, LoginReqPacket loginReqPacket) throws Exception {
         System.out.println(LocalDateTime.now() + ": 接受到客户端登录请求 " + loginReqPacket);

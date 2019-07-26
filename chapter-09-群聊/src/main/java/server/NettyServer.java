@@ -1,7 +1,6 @@
 package server;
 
-import codec.PacketDecoder;
-import codec.PacketEncoder;
+import codec.PacketCodecHandler;
 import codec.Spliter;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFutureListener;
@@ -12,14 +11,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.logging.LoggingHandler;
 import server.handler.AuthHandler;
-import server.handler.CreateGroupReqPacketHandler;
-import server.handler.GroupMessageReqHandler;
-import server.handler.JoinGroupReqPacketHandler;
-import server.handler.ListGroupMemberReqHandler;
+import server.handler.IMHandler;
 import server.handler.LoginReqHandler;
-import server.handler.LogoutReqHandler;
-import server.handler.MessageReqHandler;
-import server.handler.QuitGroupReqHandler;
 
 /**
  * @author ybd
@@ -49,19 +42,13 @@ public class NettyServer {
                            protected void initChannel(NioSocketChannel ch) {
                                ch.pipeline()
                                  .addLast(new Spliter())
-                                 .addLast(new PacketDecoder())
+                                 .addLast(PacketCodecHandler.INSTANCE)
 
-                                 .addLast(new LoginReqHandler())
-                                 .addLast(new AuthHandler())
-                                 .addLast(new LogoutReqHandler())
-                                 .addLast(new CreateGroupReqPacketHandler())
-                                 .addLast(new MessageReqHandler())
-                                 .addLast(new JoinGroupReqPacketHandler())
-                                 .addLast(new QuitGroupReqHandler())
-                                 .addLast(new ListGroupMemberReqHandler())
-                                 .addLast(new GroupMessageReqHandler())
+                                 .addLast(LoginReqHandler.INSTANCE)
+                                 .addLast(AuthHandler.INSTANCE)
 
-                                 .addLast(new PacketEncoder());
+                                 .addLast(IMHandler.INSTANCE);
+
 
                            }
                        })

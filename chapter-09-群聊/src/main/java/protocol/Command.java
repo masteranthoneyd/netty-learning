@@ -31,4 +31,7 @@ public interface Command {
     Byte GROUP_MESSAGE_REQ = Byte.valueOf("15");
     Byte GROUP_MESSAGE_RESP = Byte.valueOf("16");
 
+    Byte HEART_BEAT_REQ = Byte.valueOf("17");
+    Byte HEART_BEAT_RESP = Byte.valueOf("18");
+
 }

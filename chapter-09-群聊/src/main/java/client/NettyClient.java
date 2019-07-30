@@ -2,6 +2,7 @@ package client;
 
 import client.handler.CreateGroupRespHandler;
 import client.handler.GroupMessageRespHandler;
+import client.handler.HeartBeatTimerHandler;
 import client.handler.JoinGroupRespHandler;
 import client.handler.ListGroupMemberRespHandler;
 import client.handler.LoginRespHandler;
@@ -11,6 +12,7 @@ import client.handler.QuitGroupRespHandler;
 import codec.PacketDecoder;
 import codec.PacketEncoder;
 import codec.Spliter;
+import handler.IMIdleStateHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFutureListener;
@@ -38,6 +40,7 @@ public class NettyClient {
                      @Override
                      protected void initChannel(Channel ch) {
                          ch.pipeline()
+                           .addLast(new IMIdleStateHandler())
                            .addLast(new Spliter())
                            .addLast(new PacketDecoder())
 
@@ -50,7 +53,8 @@ public class NettyClient {
                            .addLast(new ListGroupMemberRespHandler())
                            .addLast(new GroupMessageRespHandler())
 
-                           .addLast(PacketEncoder.INSTANCE);
+                           .addLast(PacketEncoder.INSTANCE)
+                           .addLast(new HeartBeatTimerHandler());
                      }
                  })
                  .connect(NettyServer.HOST, NettyServer.PORT)

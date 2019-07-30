@@ -20,8 +20,9 @@ import static session.SessionUtil.hasLogin;
 public class LoginRespHandler extends SimpleChannelInboundHandler<LoginRespPacket> {
 
     @Override
-    public void channelActive(ChannelHandlerContext ctx) {
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
         listenSystemIn(ctx.channel());
+        super.channelActive(ctx);
     }
 
     @Override

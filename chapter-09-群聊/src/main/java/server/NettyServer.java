@@ -2,6 +2,7 @@ package server;
 
 import codec.PacketCodecHandler;
 import codec.Spliter;
+import handler.IMIdleStateHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelInitializer;
@@ -11,6 +12,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.logging.LoggingHandler;
 import server.handler.AuthHandler;
+import server.handler.HeartBeatReqHandler;
 import server.handler.IMHandler;
 import server.handler.LoginReqHandler;
 
@@ -41,10 +43,12 @@ public class NettyServer {
                            @Override
                            protected void initChannel(NioSocketChannel ch) {
                                ch.pipeline()
+                                 .addLast(new IMIdleStateHandler())
                                  .addLast(new Spliter())
                                  .addLast(PacketCodecHandler.INSTANCE)
 
                                  .addLast(LoginReqHandler.INSTANCE)
+                                 .addLast(HeartBeatReqHandler.INSTANCE)
                                  .addLast(AuthHandler.INSTANCE)
 
                                  .addLast(IMHandler.INSTANCE);

@@ -13,6 +13,7 @@ import java.util.List;
  * @contact yangbingdong1994@gmail.com
  */
 public class PacketDecoder extends ByteToMessageDecoder {
+
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
         out.add(PacketCodec.decode(in));

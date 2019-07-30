@@ -50,7 +50,7 @@ public class NettyClient {
                            .addLast(new ListGroupMemberRespHandler())
                            .addLast(new GroupMessageRespHandler())
 
-                           .addLast(new PacketEncoder());
+                           .addLast(PacketEncoder.INSTANCE);
                      }
                  })
                  .connect(NettyServer.HOST, NettyServer.PORT)
